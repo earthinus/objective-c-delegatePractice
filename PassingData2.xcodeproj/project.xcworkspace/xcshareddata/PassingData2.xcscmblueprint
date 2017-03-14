@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "12D12BE583B3DABB7E51E26225C4A65B6D9AA88B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "12D12BE583B3DABB7E51E26225C4A65B6D9AA88B" : 9223372036854775807,
+    "2466739CE270301FA8152313C4CFC5B4A2DD1ADB" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1F79461C-8123-471E-98C2-F5CD3250C731",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "12D12BE583B3DABB7E51E26225C4A65B6D9AA88B" : "DelegatePractice\/",
+    "2466739CE270301FA8152313C4CFC5B4A2DD1ADB" : "ShoppingCart\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PassingData2",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PassingData2.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/earthinus\/objective-c-delegatePractice.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "12D12BE583B3DABB7E51E26225C4A65B6D9AA88B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/earthinus\/objectivec-shopping-cart.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2466739CE270301FA8152313C4CFC5B4A2DD1ADB"
+    }
+  ]
+}
