@@ -27,21 +27,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (IBAction)passToHome:(id)sender {
     
-    if ([segue.identifier isEqualToString:@"toHome"]) {
-        
-        // Get the new view controller
-        ViewController *controller = (ViewController *)segue.destinationViewController;
-        
-        // Pass the selected object to the new view controller.
-        controller.textContent = self.textFiled.text;
+    if ([self.delegate respondsToSelector:@selector(passData:)]){
+        [self.delegate passData:self.textFiled.text];
     }
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

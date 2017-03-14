@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "SecondViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <SecondeDelegate>
 
 @end
 
@@ -17,10 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    self.textFiled.text = self.textContent;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,7 +35,12 @@
         SecondViewController *controller = (SecondViewController *) segue.destinationViewController;
         
         controller.textContent = self.textFiled.text;
+        controller.delegate = self;
     }
+}
+
+- (void) passData:(NSString *)data {
+    self.textFiled.text = data;
 }
 
 
