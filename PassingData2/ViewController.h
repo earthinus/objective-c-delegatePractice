@@ -11,6 +11,7 @@
 @interface ViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *textFiled;
+@property (strong, nonatomic) NSString *textContent;
 
 @end
 

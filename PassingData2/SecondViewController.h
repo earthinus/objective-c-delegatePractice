@@ -12,6 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UITextField *textFiled;
-@property (weak, nonatomic) NSString *textContent;
+@property (strong, nonatomic) NSString *textContent;
 
 @end
