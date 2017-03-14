@@ -18,6 +18,7 @@
     [super viewDidLoad];
     
     self.label.text = self.textContent;
+    self.textFiled.text = self.textContent;
     
 }
 
