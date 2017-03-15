@@ -7,6 +7,7 @@
 //
 
 #import "TopTableViewController.h"
+#import "InputTableViewController.h"
 
 @interface TopTableViewController ()
 
@@ -16,6 +17,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    NSArray<NSString *>
+    *dataFoodLabel  = @[@"Food ID", @"Food name", @"Food Price", @"Food made in country", @"Food calorie", @"Food size", @"Food ingredients"],
+    *dataFoodValue  = @[@"100", @"Chicken", @"8", @"Canada", @"350", @"4", @"chicken, oil, chees"],
+    *dataDrinkLabel = @[@"Drink ID", @"Drink name", @"Drink Price", @"Drink made in country", @"is Drink diet?", @"Drink size"],
+    *dataDrinkValue = @[@"412", @"Pepsi", @"2", @"USA", @"NO", @"150"],
+    *dataClothLabel = @[@"Cloth ID", @"Cloth name", @"Cloth Price", @"Cloth made in country", @"Cloth Materials"],
+    *dataClothValue = @[@"701", @"T-shirt", @"15", @"China", @"Cotton, Nylon"];
+    
+    self.key = @[@"category", @"label", @"default", @"image"];
+    self.data = @[@{self.key[0]:@"Food",
+                    self.key[1]:dataFoodLabel,
+                    self.key[2]:dataFoodValue,
+                    self.key[3]:@"icon_food.png"},
+                  
+                  @{self.key[0]:@"Drink",
+                    self.key[1]:dataDrinkLabel,
+                    self.key[2]:dataDrinkValue,
+                    self.key[3]:@"icon_drink.png"},
+                  
+                  @{self.key[0]:@"Cloth",
+                    self.key[1]:dataClothLabel,
+                    self.key[2]:dataClothValue,
+                    self.key[3]:@"icon_cloth.png"}];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -36,14 +62,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return self.data.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableViewCellID" forIndexPath:indexPath];
     
-    cell.textLabel.text = @"test";
-    
+    cell.imageView.image = [UIImage imageNamed:[self.data[indexPath.row] valueForKey:self.key[3]]];
+    cell.textLabel.text = [self.data[indexPath.row] valueForKey:self.key[0]];
     return cell;
 }
 
@@ -81,14 +107,20 @@
 }
 */
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    // Send data to InputViewController
+    if ([segue.identifier isEqualToString:@"toInputTableViewID"]) {
+        InputTableViewController *controller = [segue destinationViewController];
+        UITableViewCell *cell = (UITableViewCell*)sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        
+        controller.selectedProduct = [self.data[indexPath.row] valueForKey:self.key[0]];
+        controller.data = self.data;
+        controller.key = self.key;
+    }
 }
-*/
 
 @end

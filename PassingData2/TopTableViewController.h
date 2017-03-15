@@ -10,5 +10,12 @@
 
 @interface TopTableViewController : UITableViewController
 
+@property (strong, nonatomic) IBOutlet UITableView *TopTableView;
+@property (strong, nonatomic) NSArray<NSString *> *productName;
+
+// Static strings for every label, image, etc.
+
+@property (strong, nonatomic) NSArray<NSString *> *key;
+@property (strong, nonatomic) NSArray<NSArray *> *data;
 
 @end

@@ -13,6 +13,12 @@
 		8407FF251E789F4C0028202E /* TopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF241E789F4C0028202E /* TopTableViewController.m */; };
 		8407FF281E789F8F0028202E /* InputTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF271E789F8F0028202E /* InputTableViewController.m */; };
 		8407FF2B1E789FA90028202E /* ItemListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF2A1E789FA90028202E /* ItemListTableViewController.m */; };
+		8407FF361E78EACE0028202E /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF2D1E78EACE0028202E /* Product.m */; };
+		8407FF371E78EACE0028202E /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF2F1E78EACE0028202E /* Food.m */; };
+		8407FF381E78EACE0028202E /* Drink.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF311E78EACE0028202E /* Drink.m */; };
+		8407FF391E78EACE0028202E /* Cloth.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF331E78EACE0028202E /* Cloth.m */; };
+		8407FF3A1E78EACE0028202E /* Material.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF351E78EACE0028202E /* Material.m */; };
+		8407FF3E1E78EC360028202E /* InputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF3D1E78EC360028202E /* InputTableViewCell.m */; };
 		84EC333A1E77A68E00BE5395 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC33391E77A68E00BE5395 /* main.m */; };
 		84EC333D1E77A68E00BE5395 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC333C1E77A68E00BE5395 /* AppDelegate.m */; };
 		84EC33401E77A68E00BE5395 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC333F1E77A68E00BE5395 /* ViewController.m */; };
@@ -32,6 +38,18 @@
 		8407FF271E789F8F0028202E /* InputTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputTableViewController.m; sourceTree = "<group>"; };
 		8407FF291E789FA90028202E /* ItemListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemListTableViewController.h; sourceTree = "<group>"; };
 		8407FF2A1E789FA90028202E /* ItemListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemListTableViewController.m; sourceTree = "<group>"; };
+		8407FF2C1E78EACE0028202E /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
+		8407FF2D1E78EACE0028202E /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		8407FF2E1E78EACE0028202E /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
+		8407FF2F1E78EACE0028202E /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
+		8407FF301E78EACE0028202E /* Drink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drink.h; sourceTree = "<group>"; };
+		8407FF311E78EACE0028202E /* Drink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Drink.m; sourceTree = "<group>"; };
+		8407FF321E78EACE0028202E /* Cloth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cloth.h; sourceTree = "<group>"; };
+		8407FF331E78EACE0028202E /* Cloth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cloth.m; sourceTree = "<group>"; };
+		8407FF341E78EACE0028202E /* Material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
+		8407FF351E78EACE0028202E /* Material.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Material.m; sourceTree = "<group>"; };
+		8407FF3C1E78EC360028202E /* InputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputTableViewCell.h; sourceTree = "<group>"; };
+		8407FF3D1E78EC360028202E /* InputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputTableViewCell.m; sourceTree = "<group>"; };
 		84EC33351E77A68E00BE5395 /* PassingData2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassingData2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84EC33391E77A68E00BE5395 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84EC333B1E77A68E00BE5395 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -68,6 +86,23 @@
 			path = ../../ShoppingCart/ShoppingCart;
 			sourceTree = "<group>";
 		};
+		8407FF3B1E78EADA0028202E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8407FF2C1E78EACE0028202E /* Product.h */,
+				8407FF2D1E78EACE0028202E /* Product.m */,
+				8407FF2E1E78EACE0028202E /* Food.h */,
+				8407FF2F1E78EACE0028202E /* Food.m */,
+				8407FF301E78EACE0028202E /* Drink.h */,
+				8407FF311E78EACE0028202E /* Drink.m */,
+				8407FF321E78EACE0028202E /* Cloth.h */,
+				8407FF331E78EACE0028202E /* Cloth.m */,
+				8407FF341E78EACE0028202E /* Material.h */,
+				8407FF351E78EACE0028202E /* Material.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		84EC332C1E77A68C00BE5395 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +127,8 @@
 				8407FF241E789F4C0028202E /* TopTableViewController.m */,
 				8407FF261E789F8F0028202E /* InputTableViewController.h */,
 				8407FF271E789F8F0028202E /* InputTableViewController.m */,
+				8407FF3C1E78EC360028202E /* InputTableViewCell.h */,
+				8407FF3D1E78EC360028202E /* InputTableViewCell.m */,
 				8407FF291E789FA90028202E /* ItemListTableViewController.h */,
 				8407FF2A1E789FA90028202E /* ItemListTableViewController.m */,
 				84EC333E1E77A68E00BE5395 /* ViewController.h */,
@@ -111,6 +148,7 @@
 				84EC33441E77A68E00BE5395 /* Assets.xcassets */,
 				84EC33461E77A68E00BE5395 /* LaunchScreen.storyboard */,
 				84EC33491E77A68E00BE5395 /* Info.plist */,
+				8407FF3B1E78EADA0028202E /* Classes */,
 				8407FF1F1E789D670028202E /* Images */,
 				84EC33391E77A68E00BE5395 /* main.m */,
 			);
@@ -191,11 +229,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8407FF3A1E78EACE0028202E /* Material.m in Sources */,
+				8407FF371E78EACE0028202E /* Food.m in Sources */,
 				8407FF251E789F4C0028202E /* TopTableViewController.m in Sources */,
 				8407FF2B1E789FA90028202E /* ItemListTableViewController.m in Sources */,
 				84EC33511E77A6A300BE5395 /* SecondViewController.m in Sources */,
+				8407FF391E78EACE0028202E /* Cloth.m in Sources */,
+				8407FF3E1E78EC360028202E /* InputTableViewCell.m in Sources */,
 				84EC33401E77A68E00BE5395 /* ViewController.m in Sources */,
 				84EC333D1E77A68E00BE5395 /* AppDelegate.m in Sources */,
+				8407FF381E78EACE0028202E /* Drink.m in Sources */,
+				8407FF361E78EACE0028202E /* Product.m in Sources */,
 				8407FF281E789F8F0028202E /* InputTableViewController.m in Sources */,
 				84EC333A1E77A68E00BE5395 /* main.m in Sources */,
 			);
