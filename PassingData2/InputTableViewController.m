@@ -7,10 +7,6 @@
 //
 
 #import "InputTableViewController.h"
-#import "TopTableViewController.h"
-#import "Food.h"
-#import "Drink.h"
-#import "Cloth.h"
 
 @interface InputTableViewController ()
 
@@ -26,7 +22,6 @@
     
     // Get the index of selected row of TopViewController
     for (int i = 0; i < self.data.count; i++) {
-        NSLog(@"%@", [self.data[i] valueForKey:self.key[0]]);
         if ([self.selectedProduct isEqualToString:[self.data[i] valueForKey:self.key[0]]]) {
             self.index = i;
             break;
@@ -72,7 +67,7 @@
 
 - (IBAction)sendItem:(id)sender {
     
-    //if ([self.delegate respondsToSelector:@selector(item:)]) {
+    if ([self.delegate respondsToSelector:@selector(item:)]) {
         
         // Get values from each textfield
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -111,10 +106,9 @@
                                     clothMadeInCountry:[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]]
                                         clothMaterials:@[@"cotton"]]; // TODO: split by comma
         }
-    //}
+    }
     
-    //[self.delegate item:self.item];
-    
+    [self.delegate item:self.item];
     [[self navigationController] popViewControllerAnimated:YES];
 }
 

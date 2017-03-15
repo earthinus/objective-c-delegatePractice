@@ -7,9 +7,12 @@
 //
 
 #import "TopTableViewController.h"
-#import "InputTableViewController.h"
 
 @interface TopTableViewController ()
+
+@property float sum;
+
+- (void) showSumPrice:(Product *)item;
 
 @end
 
@@ -18,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.items = [[NSMutableArray alloc] init];
+    self.sum = 0;
     
     NSArray<NSString *>
     *dataFoodLabel  = @[@"Food ID", @"Food name", @"Food Price", @"Food made in country", @"Food calorie", @"Food size", @"Food ingredients"],
@@ -58,19 +63,46 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.data.count;
+    
+    if (section == 0) {
+        return self.data.count;
+        
+    } else {
+        return 1;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableViewCellID" forIndexPath:indexPath];
     
-    cell.imageView.image = [UIImage imageNamed:[self.data[indexPath.row] valueForKey:self.key[3]]];
-    cell.textLabel.text = [self.data[indexPath.row] valueForKey:self.key[0]];
-    return cell;
+    if (indexPath.section == 0) {
+    
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TopTableViewCellID" forIndexPath:indexPath];
+        
+        cell.imageView.image = [UIImage imageNamed:[self.data[indexPath.row] valueForKey:self.key[3]]];
+        cell.textLabel.text = [self.data[indexPath.row] valueForKey:self.key[0]];
+        return cell;
+        
+    } else {
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TopTableViewPriceCellID" forIndexPath:indexPath];
+        
+        cell.textLabel.text = [@"$" stringByAppendingString:@(self.sum).stringValue];
+        return cell;
+    }
+}
+
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0) {
+        return 100;
+        
+    } else {
+        return 100;
+    }
 }
 
 /*
@@ -120,7 +152,21 @@
         controller.selectedProduct = [self.data[indexPath.row] valueForKey:self.key[0]];
         controller.data = self.data;
         controller.key = self.key;
+        controller.delegate = self;
     }
+}
+
+- (void) item:(Product *)item {
+    
+    [self.items addObject:item];
+    [self showSumPrice:item];
+}
+
+- (void) showSumPrice:(Product *)item {
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    self.sum += [item price];
+    cell.textLabel.text = [@"Total $" stringByAppendingString:@(self.sum).stringValue];
 }
 
 @end
