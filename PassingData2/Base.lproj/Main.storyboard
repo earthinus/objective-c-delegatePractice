@@ -158,7 +158,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Item information" id="GqJ-7P-nYv">
                         <barButtonItem key="backBarButtonItem" systemItem="cancel" id="nrC-qm-gMg"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="dx3-mc-u2z"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="dx3-mc-u2z">
+                            <connections>
+                                <action selector="sendItem:" destination="S6h-l7-dI4" id="3m9-CO-TH6"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="inputTableView" destination="3b7-xp-DUb" id="b4d-r7-iC9"/>

@@ -69,6 +69,55 @@
     return cell;
 }
 
+
+- (IBAction)sendItem:(id)sender {
+    
+    //if ([self.delegate respondsToSelector:@selector(item:)]) {
+        
+        // Get values from each textfield
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        NSIndexPath *indexPath;
+        InputTableViewCell *cell;
+        NSArray *arrLable = [self.data[self.index] valueForKey:self.key[1]];
+        
+        for (int i = 0; i < arrLable.count; i++) {
+            indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+            cell = [_inputTableView cellForRowAtIndexPath:indexPath];
+            [dict setObject:cell.textField.text forKey:[self.data[self.index] valueForKey:self.key[1]][i]];
+        }
+        
+        if (self.index == 0) {
+            int i = 0;
+            self.item = [[Food alloc] initWithFoodID:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] integerValue]
+                                            foodName:[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]]
+                                           foodPrice:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] floatValue]
+                                   foodMadeInCountry:[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]]
+                                         foodCalorie:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] integerValue]
+                                            foodSize:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] integerValue]
+                                     foodIngredients:@[@"chicken", @"oil", @"chees"]]; // TODO: split by comma
+        } else if (self.index == 1) {
+            int i = 0;
+            self.item = [[Drink alloc] initWithDrinkID:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] integerValue]
+                                             drinkName:[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]]
+                                            drinkPrice:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] floatValue]
+                                    drinkMadeInCountry:[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]]
+                                           isDrinkDiet:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] integerValue]
+                                             drinkSize:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] integerValue]];
+        } else if (self.index == 2) {
+            int i = 0;
+            self.item = [[Cloth alloc] initWithClothID:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] integerValue]
+                                             clothName:[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]]
+                                            clothPrice:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] floatValue]
+                                    clothMadeInCountry:[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]]
+                                        clothMaterials:@[@"cotton"]]; // TODO: split by comma
+        }
+    //}
+    
+    //[self.delegate item:self.item];
+    
+    [[self navigationController] popViewControllerAnimated:YES];
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
