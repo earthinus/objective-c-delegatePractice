@@ -19,6 +19,10 @@
 		8407FF391E78EACE0028202E /* Cloth.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF331E78EACE0028202E /* Cloth.m */; };
 		8407FF3A1E78EACE0028202E /* Material.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF351E78EACE0028202E /* Material.m */; };
 		8407FF3E1E78EC360028202E /* InputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF3D1E78EC360028202E /* InputTableViewCell.m */; };
+		8407FF471E79FFA20028202E /* FoodItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF401E79FFA20028202E /* FoodItemTableViewCell.m */; };
+		8407FF481E79FFA20028202E /* DrinkItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF421E79FFA20028202E /* DrinkItemTableViewCell.m */; };
+		8407FF491E79FFA20028202E /* ClothItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF441E79FFA20028202E /* ClothItemTableViewCell.m */; };
+		8407FF4A1E79FFA20028202E /* ItemHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF461E79FFA20028202E /* ItemHeaderTableViewCell.m */; };
 		84EC333A1E77A68E00BE5395 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC33391E77A68E00BE5395 /* main.m */; };
 		84EC333D1E77A68E00BE5395 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC333C1E77A68E00BE5395 /* AppDelegate.m */; };
 		84EC33401E77A68E00BE5395 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC333F1E77A68E00BE5395 /* ViewController.m */; };
@@ -50,6 +54,14 @@
 		8407FF351E78EACE0028202E /* Material.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Material.m; sourceTree = "<group>"; };
 		8407FF3C1E78EC360028202E /* InputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputTableViewCell.h; sourceTree = "<group>"; };
 		8407FF3D1E78EC360028202E /* InputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputTableViewCell.m; sourceTree = "<group>"; };
+		8407FF3F1E79FFA20028202E /* FoodItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItemTableViewCell.h; sourceTree = "<group>"; };
+		8407FF401E79FFA20028202E /* FoodItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemTableViewCell.m; sourceTree = "<group>"; };
+		8407FF411E79FFA20028202E /* DrinkItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkItemTableViewCell.h; sourceTree = "<group>"; };
+		8407FF421E79FFA20028202E /* DrinkItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkItemTableViewCell.m; sourceTree = "<group>"; };
+		8407FF431E79FFA20028202E /* ClothItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothItemTableViewCell.h; sourceTree = "<group>"; };
+		8407FF441E79FFA20028202E /* ClothItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothItemTableViewCell.m; sourceTree = "<group>"; };
+		8407FF451E79FFA20028202E /* ItemHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemHeaderTableViewCell.h; sourceTree = "<group>"; };
+		8407FF461E79FFA20028202E /* ItemHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemHeaderTableViewCell.m; sourceTree = "<group>"; };
 		84EC33351E77A68E00BE5395 /* PassingData2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassingData2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84EC33391E77A68E00BE5395 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84EC333B1E77A68E00BE5395 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -103,6 +115,23 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		8407FF4B1E79FFB10028202E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8407FF3F1E79FFA20028202E /* FoodItemTableViewCell.h */,
+				8407FF401E79FFA20028202E /* FoodItemTableViewCell.m */,
+				8407FF411E79FFA20028202E /* DrinkItemTableViewCell.h */,
+				8407FF421E79FFA20028202E /* DrinkItemTableViewCell.m */,
+				8407FF431E79FFA20028202E /* ClothItemTableViewCell.h */,
+				8407FF441E79FFA20028202E /* ClothItemTableViewCell.m */,
+				8407FF451E79FFA20028202E /* ItemHeaderTableViewCell.h */,
+				8407FF461E79FFA20028202E /* ItemHeaderTableViewCell.m */,
+				8407FF3C1E78EC360028202E /* InputTableViewCell.h */,
+				8407FF3D1E78EC360028202E /* InputTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		84EC332C1E77A68C00BE5395 = {
 			isa = PBXGroup;
 			children = (
@@ -145,8 +174,7 @@
 				84EC333C1E77A68E00BE5395 /* AppDelegate.m */,
 				84EC33441E77A68E00BE5395 /* Assets.xcassets */,
 				84EC33461E77A68E00BE5395 /* LaunchScreen.storyboard */,
-				8407FF3C1E78EC360028202E /* InputTableViewCell.h */,
-				8407FF3D1E78EC360028202E /* InputTableViewCell.m */,
+				8407FF4B1E79FFB10028202E /* Cells */,
 				84EC33491E77A68E00BE5395 /* Info.plist */,
 				8407FF3B1E78EADA0028202E /* Classes */,
 				8407FF1F1E789D670028202E /* Images */,
@@ -239,9 +267,13 @@
 				84EC33401E77A68E00BE5395 /* ViewController.m in Sources */,
 				84EC333D1E77A68E00BE5395 /* AppDelegate.m in Sources */,
 				8407FF381E78EACE0028202E /* Drink.m in Sources */,
+				8407FF4A1E79FFA20028202E /* ItemHeaderTableViewCell.m in Sources */,
 				8407FF361E78EACE0028202E /* Product.m in Sources */,
+				8407FF481E79FFA20028202E /* DrinkItemTableViewCell.m in Sources */,
 				8407FF281E789F8F0028202E /* InputTableViewController.m in Sources */,
+				8407FF471E79FFA20028202E /* FoodItemTableViewCell.m in Sources */,
 				84EC333A1E77A68E00BE5395 /* main.m in Sources */,
+				8407FF491E79FFA20028202E /* ClothItemTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

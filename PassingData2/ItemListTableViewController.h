@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FoodItemTableViewCell.h"
+#import "DrinkItemTableViewCell.h"
+#import "ClothItemTableViewCell.h"
+#import "ItemHeaderTableViewCell.h"
+#import "Food.h"
+#import "Drink.h"
+#import "Cloth.h"
 
 @interface ItemListTableViewController : UITableViewController
 
 @property (strong, nonatomic) IBOutlet UITableView *itemListTableView;
+@property (strong, nonatomic) IBOutlet NSMutableArray<Product *> *items;
 
 @end

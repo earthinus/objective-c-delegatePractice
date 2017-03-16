@@ -153,6 +153,11 @@
         controller.data = self.data;
         controller.key = self.key;
         controller.delegate = self;
+        
+    } else if ([segue.identifier isEqualToString:@"toItemListTableViewID"]) {
+        ItemListTableViewController *controller = [segue destinationViewController];
+        
+        controller.items = self.items;
     }
 }
 

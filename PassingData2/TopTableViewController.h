@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "InputTableViewController.h"
+#import "ItemListTableViewController.h"
 #import "Product.h"
 
 @interface TopTableViewController : UITableViewController <InputDelegate>
