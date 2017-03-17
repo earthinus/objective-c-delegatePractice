@@ -36,28 +36,27 @@
     self.data = @[@{self.key[0]:@"Food",
                     self.key[1]:dataFoodLabel,
                     self.key[2]:dataFoodValue,
-                    self.key[3]:@"icon_food.png"},
+                    self.key[3]:@"icon_food"},
                   
                   @{self.key[0]:@"Drink",
                     self.key[1]:dataDrinkLabel,
                     self.key[2]:dataDrinkValue,
-                    self.key[3]:@"icon_drink.png"},
+                    self.key[3]:@"icon_drink"},
                   
                   @{self.key[0]:@"Cloth",
                     self.key[1]:dataClothLabel,
                     self.key[2]:dataClothValue,
-                    self.key[3]:@"icon_cloth.png"}];
+                    self.key[3]:@"icon_cloth"}];
+    
+    // TODO: add if syntax
+    ItemListTableViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ItemListTableViewControllerID"];
+    controller.delegate = self;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -90,7 +89,7 @@
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TopTableViewPriceCellID" forIndexPath:indexPath];
         
-        cell.textLabel.text = [@"$" stringByAppendingString:@(self.sum).stringValue];
+        cell.textLabel.text = [@"Total $" stringByAppendingString:@(self.sum).stringValue];
         return cell;
     }
 }
@@ -103,6 +102,40 @@
     } else {
         return 100;
     }
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    // Send data to InputViewController
+    if ([segue.identifier isEqualToString:@"toInputTableViewID"]) {
+        InputTableViewController *controller = [segue destinationViewController];
+        UITableViewCell *cell = (UITableViewCell*)sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        
+        controller.delegate = self;
+        controller.selectedProduct = [self.data[indexPath.row] valueForKey:self.key[0]];
+        controller.data = self.data;
+        controller.key = self.key;
+    }
+}
+
+- (void) item:(Product *)item {
+    
+    [self.items addObject:item];
+    [self showSumPrice:item];
+}
+
+- (void) showSumPrice:(Product *)item {
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    self.sum += [item price];
+    cell.textLabel.text = [@"Total $" stringByAppendingString:@(self.sum).stringValue];
+}
+
+- (NSMutableArray<Product *> *)sendItems {
+    return self.items;
 }
 
 /*
@@ -139,39 +172,5 @@
 }
 */
 
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    // Send data to InputViewController
-    if ([segue.identifier isEqualToString:@"toInputTableViewID"]) {
-        InputTableViewController *controller = [segue destinationViewController];
-        UITableViewCell *cell = (UITableViewCell*)sender;
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-        
-        controller.selectedProduct = [self.data[indexPath.row] valueForKey:self.key[0]];
-        controller.data = self.data;
-        controller.key = self.key;
-        controller.delegate = self;
-        
-    } else if ([segue.identifier isEqualToString:@"toItemListTableViewID"]) {
-        ItemListTableViewController *controller = [segue destinationViewController];
-        
-        controller.items = self.items;
-    }
-}
-
-- (void) item:(Product *)item {
-    
-    [self.items addObject:item];
-    [self showSumPrice:item];
-}
-
-- (void) showSumPrice:(Product *)item {
-    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    self.sum += [item price];
-    cell.textLabel.text = [@"Total $" stringByAppendingString:@(self.sum).stringValue];
-}
-
 @end
+

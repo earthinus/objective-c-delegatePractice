@@ -11,7 +11,7 @@
 #import "ItemListTableViewController.h"
 #import "Product.h"
 
-@interface TopTableViewController : UITableViewController <InputDelegate>
+@interface TopTableViewController : UITableViewController <InputDelegate, ItemListDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *TopTableView;
 @property (strong, nonatomic) NSArray<NSString *> *productName;

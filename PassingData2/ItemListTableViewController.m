@@ -19,12 +19,15 @@
 @implementation ItemListTableViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
+    [super viewDidLoad]; // 1
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
+    // Get product items from TopTableViewController
+    self.items = [self.delegate sendItems]; // 2
+    
+    // Classify to Food, Drink, Cloth
     _foodItems = [[NSMutableArray<Food *> alloc] init];
     _drinkItems = [[NSMutableArray<Drink *> alloc] init];
     _clothItems = [[NSMutableArray<Cloth *> alloc] init];
@@ -59,7 +62,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 43;
+    return 40;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -142,6 +145,7 @@
         return cell;
     }
 }
+
 
 /*
 // Override to support conditional editing of the table view.

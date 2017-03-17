@@ -17,20 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="H7D-6H-hh3">
-                            <rect key="frame" x="0.0" y="116" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <items>
-                                <barButtonItem style="plain" systemItem="flexibleSpace" id="T6G-0F-T1X"/>
-                                <barButtonItem title="See item" style="plain" id="ZmR-ca-Vnt">
-                                    <connections>
-                                        <action selector="seeItem:" destination="YIa-rp-tF3" id="6Fn-dS-pzg"/>
-                                        <segue destination="fF0-Xw-a8P" kind="push" identifier="toItemListTableViewID" id="qHc-DB-sd3"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem style="plain" systemItem="flexibleSpace" id="wRe-Cv-Dpt"/>
-                            </items>
-                        </toolbar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TopTableViewCellID" textLabel="uCZ-a4-mAf" detailTextLabel="GGI-Nc-XQr" imageView="9d4-mH-lUV" style="IBUITableViewCellStyleValue1" id="Wiw-c4-jiv">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -60,7 +46,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="S6h-l7-dI4" kind="push" identifier="toInputTableViewID" id="NFY-NC-DHX"/>
+                                    <segue destination="S6h-l7-dI4" kind="show" identifier="toInputTableViewID" id="RYG-9D-Q4D"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TopTableViewPriceCellID" textLabel="c6I-8r-XzL" style="IBUITableViewCellStyleDefault" id="TXw-DP-sZn">
@@ -86,16 +72,17 @@
                             <outlet property="delegate" destination="YIa-rp-tF3" id="906-PS-3mw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Top" id="NyB-Ex-aVD">
-                        <barButtonItem key="backBarButtonItem" style="plain" systemItem="cancel" id="rCN-c2-dcb"/>
-                    </navigationItem>
+                    <tabBarItem key="tabBarItem" title="Add Item" image="icon_add" id="Hqy-1u-Bpq">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="Top" id="NyB-Ex-aVD"/>
                     <connections>
                         <outlet property="TopTableView" destination="yf5-4f-4BD" id="5pk-gd-yae"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5h-w9-oB3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2685.5999999999999" y="138.98050974512745"/>
+            <point key="canvasLocation" x="3441" y="139"/>
         </scene>
         <!--Item list-->
         <scene sceneID="JCd-pe-tNo">
@@ -127,11 +114,11 @@
                                     <outlet property="headerLabel" destination="067-og-zfI" id="WUc-mM-53m"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FoodItemTableViewCellID" rowHeight="60" id="WBD-ve-DTO" customClass="FoodItemTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FoodItemTableViewCellID" rowHeight="60" id="WBD-ve-DTO" customClass="FoodItemTableViewCell">
                                 <rect key="frame" x="0.0" y="72" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WBD-ve-DTO" id="aYZ-jW-Hmf">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J6k-F4-fgN">
@@ -174,6 +161,7 @@
                                     <outlet property="foodPriceLabel" destination="UiD-op-pDE" id="A3f-Fb-PYD"/>
                                     <outlet property="foodSizeLabel" destination="0eo-m1-PjZ" id="4jA-9Z-9bN"/>
                                     <outlet property="foodSumPriceLabel" destination="eIY-uQ-1ag" id="mSX-Lj-gGd"/>
+                                    <segue destination="S6h-l7-dI4" kind="show" identifier="toInputTableViewID" id="vx0-RN-zsP"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DrinkItemTableViewCellID" rowHeight="60" id="lJb-fV-vXG" customClass="DrinkItemTableViewCell">
@@ -256,16 +244,18 @@
                             <outlet property="delegate" destination="fF0-Xw-a8P" id="UmC-1Q-06C"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" tag="1" title="Item List" image="icon_cart" id="7GE-nx-mWY"/>
                     <navigationItem key="navigationItem" title="Item list" id="j8c-VM-lvT">
                         <barButtonItem key="backBarButtonItem" title="Back" id="J7s-bW-Cqu"/>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="itemListTableView" destination="P8E-c6-1Fg" id="aXN-I1-yEI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASy-tk-G6n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2685.5999999999999" y="844.22788605697156"/>
+            <point key="canvasLocation" x="3441" y="899"/>
         </scene>
         <!--Item information-->
         <scene sceneID="SCZ-Wh-0U8">
@@ -324,7 +314,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nEh-MP-euA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3448.8000000000002" y="138.98050974512745"/>
+            <point key="canvasLocation" x="4226" y="139"/>
         </scene>
         <!--title-->
         <scene sceneID="gLP-J9-EJS">
@@ -340,15 +330,40 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="YIa-rp-tF3" kind="relationship" relationship="rootViewController" id="IlC-Al-PIn"/>
+                        <segue destination="QLb-pM-BC7" kind="relationship" relationship="rootViewController" id="IlC-Al-PIn"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3m-i1-ehi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1924" y="139"/>
         </scene>
+        <!--Item List Tab Bar Controller-->
+        <scene sceneID="YGm-TL-Lcn">
+            <objects>
+                <tabBarController storyboardIdentifier="ItemListTabBarControllerID" id="QLb-pM-BC7" customClass="ItemListTabBarController" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="lUZ-Dh-n6s"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="rWz-1e-WI9">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="YIa-rp-tF3" kind="relationship" relationship="viewControllers" id="36X-VI-McJ"/>
+                        <segue destination="fF0-Xw-a8P" kind="relationship" relationship="viewControllers" id="Szb-XV-902"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gBq-RX-fmx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2685.5999999999999" y="138.98050974512745"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="icon_add" width="24" height="24"/>
+        <image name="icon_cart" width="24" height="24"/>
         <image name="icon_food.png" width="48" height="48"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="RYG-9D-Q4D"/>
+    </inferredMetricsTieBreakers>
 </document>
