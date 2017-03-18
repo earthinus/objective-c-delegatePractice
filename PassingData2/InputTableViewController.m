@@ -110,6 +110,9 @@
     // Show sum price on TopViewController
     [self.delegate showSumPrice:item];
     
+    // Add badge on TabBarButton
+    [self.delegate addBadge];
+    
     // Close
     [[self navigationController] popViewControllerAnimated:YES];
 }

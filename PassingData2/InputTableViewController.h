@@ -16,6 +16,8 @@
 
 - (void) showSumPrice:(Product *)item;
 
+- (void) addBadge;
+
 @end
 
 @interface InputTableViewController : UITableViewController

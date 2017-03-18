@@ -95,5 +95,13 @@
     cell.textLabel.text = [@"Total $" stringByAppendingString:@(self.sum).stringValue];
 }
 
+- (void) addBadge {
+    self.items = ((NavigationController*)(self.navigationController)).items;
+    
+    // Add badge on TabBarButton
+    UITabBarItem *tbi = (UITabBarItem *)[self.tabBarController.tabBar.items objectAtIndex:1];
+    tbi.badgeValue = [NSString stringWithFormat:@"%lu", (unsigned long)self.items.count];
+}
+
 @end
 
