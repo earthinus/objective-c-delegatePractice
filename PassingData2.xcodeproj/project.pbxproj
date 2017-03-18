@@ -20,7 +20,8 @@
 		8407FF481E79FFA20028202E /* DrinkItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF421E79FFA20028202E /* DrinkItemTableViewCell.m */; };
 		8407FF491E79FFA20028202E /* ClothItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF441E79FFA20028202E /* ClothItemTableViewCell.m */; };
 		8407FF4A1E79FFA20028202E /* ItemHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407FF461E79FFA20028202E /* ItemHeaderTableViewCell.m */; };
-		8465637B1E7B78E000AB662F /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8465637A1E7B78E000AB662F /* TabBarController.m */; };
+		8465639E1E7DCB1900AB662F /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8465639C1E7DCB1900AB662F /* NavigationController.m */; };
+		8465639F1E7DCB1900AB662F /* NavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8465639D1E7DCB1900AB662F /* NavigationController.xib */; };
 		84EC333A1E77A68E00BE5395 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC33391E77A68E00BE5395 /* main.m */; };
 		84EC333D1E77A68E00BE5395 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC333C1E77A68E00BE5395 /* AppDelegate.m */; };
 		84EC33431E77A68E00BE5395 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EC33411E77A68E00BE5395 /* Main.storyboard */; };
@@ -55,8 +56,9 @@
 		8407FF441E79FFA20028202E /* ClothItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothItemTableViewCell.m; sourceTree = "<group>"; };
 		8407FF451E79FFA20028202E /* ItemHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemHeaderTableViewCell.h; sourceTree = "<group>"; };
 		8407FF461E79FFA20028202E /* ItemHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemHeaderTableViewCell.m; sourceTree = "<group>"; };
-		846563791E7B78E000AB662F /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
-		8465637A1E7B78E000AB662F /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
+		8465639B1E7DCB1900AB662F /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
+		8465639C1E7DCB1900AB662F /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
+		8465639D1E7DCB1900AB662F /* NavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationController.xib; sourceTree = "<group>"; };
 		84EC33351E77A68E00BE5395 /* PassingData2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassingData2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84EC33391E77A68E00BE5395 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84EC333B1E77A68E00BE5395 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -132,8 +134,9 @@
 			isa = PBXGroup;
 			children = (
 				84EC33411E77A68E00BE5395 /* Main.storyboard */,
-				846563791E7B78E000AB662F /* TabBarController.h */,
-				8465637A1E7B78E000AB662F /* TabBarController.m */,
+				8465639B1E7DCB1900AB662F /* NavigationController.h */,
+				8465639C1E7DCB1900AB662F /* NavigationController.m */,
+				8465639D1E7DCB1900AB662F /* NavigationController.xib */,
 				8407FF231E789F4C0028202E /* TopTableViewController.h */,
 				8407FF241E789F4C0028202E /* TopTableViewController.m */,
 				8407FF261E789F8F0028202E /* InputTableViewController.h */,
@@ -222,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84EC33481E77A68E00BE5395 /* LaunchScreen.storyboard in Resources */,
+				8465639F1E7DCB1900AB662F /* NavigationController.xib in Resources */,
 				84EC33451E77A68E00BE5395 /* Assets.xcassets in Resources */,
 				84EC33431E77A68E00BE5395 /* Main.storyboard in Resources */,
 			);
@@ -234,12 +238,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8465637B1E7B78E000AB662F /* TabBarController.m in Sources */,
 				8407FF3A1E78EACE0028202E /* Material.m in Sources */,
 				8407FF371E78EACE0028202E /* Food.m in Sources */,
 				8407FF251E789F4C0028202E /* TopTableViewController.m in Sources */,
 				8407FF2B1E789FA90028202E /* ItemListTableViewController.m in Sources */,
 				8407FF391E78EACE0028202E /* Cloth.m in Sources */,
+				8465639E1E7DCB1900AB662F /* NavigationController.m in Sources */,
 				8407FF3E1E78EC360028202E /* InputTableViewCell.m in Sources */,
 				84EC333D1E77A68E00BE5395 /* AppDelegate.m in Sources */,
 				8407FF381E78EACE0028202E /* Drink.m in Sources */,

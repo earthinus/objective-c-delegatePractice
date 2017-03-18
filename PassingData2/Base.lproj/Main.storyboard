@@ -319,7 +319,7 @@
         <!--title-->
         <scene sceneID="gLP-J9-EJS">
             <objects>
-                <navigationController title="title" id="GFn-13-af2" sceneMemberID="viewController">
+                <navigationController title="title" hidesBarsWhenKeyboardAppears="YES" id="GFn-13-af2" customClass="NavigationController" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Ldw-R5-LSw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -340,7 +340,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="YGm-TL-Lcn">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarControllerID" id="QLb-pM-BC7" customClass="TabBarController" sceneMemberID="viewController">
+                <tabBarController id="QLb-pM-BC7" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="lUZ-Dh-n6s"/>

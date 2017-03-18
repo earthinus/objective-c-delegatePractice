@@ -14,7 +14,6 @@
 #import "Food.h"
 #import "Drink.h"
 #import "Cloth.h"
-#import "TabBarController.h"
 
 @interface ItemListTableViewController : UITableViewController
 

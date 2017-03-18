@@ -7,6 +7,7 @@
 //
 
 #import "ItemListTableViewController.h"
+#import "NavigationController.h"
 
 
 @interface ItemListTableViewController ()
@@ -22,14 +23,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.data = ((TabBarController*)(self.tabBarController)).data;
-    self.key = ((TabBarController*)(self.tabBarController)).key;
+    self.data = ((NavigationController *)(self.navigationController)).data;
+    self.key = ((NavigationController *)(self.navigationController)).key;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
     // Get product items from TopTableViewController
-    self.items = ((TabBarController*)(self.tabBarController)).items;
+    self.items = ((NavigationController *)(self.navigationController)).items;
     
     // Classify to Food, Drink, Cloth
     _foodItems = [[NSMutableArray<Food *> alloc] init];
@@ -115,7 +116,7 @@
             cell = [[FoodItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifer];
         }
         
-        cell.foodImageView.image = [UIImage imageNamed:@"icon_food.png"];
+        cell.foodImageView.image = [UIImage imageNamed:[self.data[indexPath.section] valueForKey:self.key[3]]];
         cell.foodNameLabel.text = _foodItems[indexPath.row].productName;
         cell.foodSumPriceLabel.text = [NSString stringWithFormat:@"$%.2f", _foodItems[indexPath.row].price];
         cell.foodPriceLabel.text = [NSString stringWithFormat:@"$%.2f", _foodItems[indexPath.row].productPrice];
@@ -130,7 +131,7 @@
             cell = [[DrinkItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifer];
         }
         
-        cell.drinkImageView.image = [UIImage imageNamed:@"icon_drink.png"];
+        cell.drinkImageView.image = [UIImage imageNamed:[self.data[indexPath.section] valueForKey:self.key[3]]];
         cell.drinkNameLabel.text = _drinkItems[indexPath.row].productName;
         cell.drinkPriceLabel.text = [NSString stringWithFormat:@"$%.2f", _drinkItems[indexPath.row].productPrice];
         cell.drinkSizeLabel.text = [NSString stringWithFormat:@"size: %ld", _drinkItems[indexPath.row].drinkSize];
@@ -144,56 +145,11 @@
             cell = [[ClothItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifer];
         }
         
-        cell.clothImageView.image = [UIImage imageNamed:@"icon_cloth.png"];
+        cell.clothImageView.image = [UIImage imageNamed:[self.data[indexPath.section] valueForKey:self.key[3]]];
         cell.clothNameLabel.text = _clothItems[indexPath.row].productName;
         cell.clothPriceLabel.text = [NSString stringWithFormat:@"$%.2f", _clothItems[indexPath.row].productPrice];
         return cell;
     }
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

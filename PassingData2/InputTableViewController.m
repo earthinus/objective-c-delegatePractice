@@ -7,7 +7,7 @@
 //
 
 #import "InputTableViewController.h"
-#import "TabBarController.h"
+#import "NavigationController.h"
 
 @interface InputTableViewController ()
 
@@ -17,6 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.data = ((NavigationController*)(self.navigationController)).data;
+    self.key = ((NavigationController*)(self.navigationController)).key;
     
     // Get the index of selected row of TopViewController
     for (int i = 0; i < self.data.count; i++) {
@@ -101,8 +104,8 @@
         }
     }
     
-    // Send item to TabBarController
-    [((TabBarController*)(self.tabBarController)).items addObject:item];
+    // Send item to NavigationController
+    [((NavigationController*)(self.navigationController)).items addObject:item];
     
     // Show sum price on TopViewController
     [self.delegate showSumPrice:item];

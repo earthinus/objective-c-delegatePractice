@@ -7,7 +7,7 @@
 //
 
 #import "TopTableViewController.h"
-#import "TabBarController.h"
+#import "NavigationController.h"
 
 @interface TopTableViewController ()
 
@@ -22,8 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.data = ((TabBarController*)(self.tabBarController)).data;
-    self.key = ((TabBarController*)(self.tabBarController)).key;
+    self.data = ((NavigationController*)(self.navigationController)).data;
+    self.key = ((NavigationController*)(self.navigationController)).key;
     self.sum = 0;
 }
 
@@ -83,16 +83,11 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         
         controller.delegate = self;
-        controller.data = self.data;
-        controller.key = self.key;
         controller.selectedProduct = [self.data[indexPath.row] valueForKey:self.key[0]];
     }
 }
 
 - (void) showSumPrice:(Product *)item {
-    
-    // Update items in TabBarController
-    [((TabBarController*)(self.tabBarController)).items addObject:item];
     
     NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
