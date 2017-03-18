@@ -8,17 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "InputTableViewController.h"
-#import "ItemListTableViewController.h"
 #import "Product.h"
 
-@interface TopTableViewController : UITableViewController <InputDelegate, ItemListDelegate>
+@interface TopTableViewController : UITableViewController <InputDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *TopTableView;
 @property (strong, nonatomic) NSArray<NSString *> *productName;
 @property (strong, nonatomic) NSMutableArray<Product *> *items;
-
-// Static strings for every label, image, etc.
-@property (strong, nonatomic) NSArray<NSString *> *key;
 @property (strong, nonatomic) NSArray<NSArray *> *data;
+@property (strong, nonatomic) NSArray<NSString *> *key;
 
 @end

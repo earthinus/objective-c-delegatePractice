@@ -14,7 +14,7 @@
 
 @protocol InputDelegate <NSObject>
 
-- (void) item:(Product *)item;
+- (void) showSumPrice:(Product *)item;
 
 @end
 
@@ -22,8 +22,9 @@
 
 @property (weak, nonatomic) id<InputDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UITableView *inputTableView;
-@property (strong, nonatomic) NSString *selectedProduct;
 @property (strong, nonatomic) NSArray<NSArray *> *data;
 @property (strong, nonatomic) NSArray<NSString *> *key;
+@property (strong, nonatomic) NSString *selectedProduct;
+@property NSInteger index;
 
 @end

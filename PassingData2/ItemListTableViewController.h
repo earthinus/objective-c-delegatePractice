@@ -14,16 +14,10 @@
 #import "Food.h"
 #import "Drink.h"
 #import "Cloth.h"
-
-@protocol ItemListDelegate <NSObject>
-
-- (NSMutableArray<Product *> *) sendItems;
-
-@end
+#import "TabBarController.h"
 
 @interface ItemListTableViewController : UITableViewController
 
-@property (weak, nonatomic) id<ItemListDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UITableView *itemListTableView;
 @property (strong, nonatomic) IBOutlet NSMutableArray<Product *> *items;
 @property (strong, nonatomic) NSArray<NSArray *> *data;

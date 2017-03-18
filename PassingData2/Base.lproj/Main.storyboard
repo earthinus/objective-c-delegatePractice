@@ -337,14 +337,15 @@
             </objects>
             <point key="canvasLocation" x="1924" y="139"/>
         </scene>
-        <!--Item List Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="YGm-TL-Lcn">
             <objects>
-                <tabBarController storyboardIdentifier="ItemListTabBarControllerID" id="QLb-pM-BC7" customClass="ItemListTabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarControllerID" id="QLb-pM-BC7" customClass="TabBarController" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="lUZ-Dh-n6s"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="rWz-1e-WI9">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>

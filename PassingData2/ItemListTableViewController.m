@@ -8,6 +8,7 @@
 
 #import "ItemListTableViewController.h"
 
+
 @interface ItemListTableViewController ()
 
 @property (strong, nonatomic) NSMutableArray<Food *> *foodItems;
@@ -19,13 +20,16 @@
 @implementation ItemListTableViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad]; // 1
+    [super viewDidLoad];
+    
+    self.data = ((TabBarController*)(self.tabBarController)).data;
+    self.key = ((TabBarController*)(self.tabBarController)).key;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
     // Get product items from TopTableViewController
-    self.items = [self.delegate sendItems]; // 2
+    self.items = ((TabBarController*)(self.tabBarController)).items;
     
     // Classify to Food, Drink, Cloth
     _foodItems = [[NSMutableArray<Food *> alloc] init];
@@ -44,11 +48,12 @@
             [_clothItems addObject:(Cloth *)_items[i]];
         }
     }
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source

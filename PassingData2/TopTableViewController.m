@@ -7,6 +7,7 @@
 //
 
 #import "TopTableViewController.h"
+#import "TabBarController.h"
 
 @interface TopTableViewController ()
 
@@ -21,42 +22,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.items = [[NSMutableArray alloc] init];
+    self.data = ((TabBarController*)(self.tabBarController)).data;
+    self.key = ((TabBarController*)(self.tabBarController)).key;
     self.sum = 0;
-    
-    NSArray<NSString *>
-    *dataFoodLabel  = @[@"Food ID", @"Food name", @"Food Price", @"Food made in country", @"Food calorie", @"Food size", @"Food ingredients"],
-    *dataFoodValue  = @[@"100", @"Chicken", @"8", @"Canada", @"350", @"4", @"chicken, oil, chees"],
-    *dataDrinkLabel = @[@"Drink ID", @"Drink name", @"Drink Price", @"Drink made in country", @"is Drink diet?", @"Drink size"],
-    *dataDrinkValue = @[@"412", @"Pepsi", @"2", @"USA", @"NO", @"150"],
-    *dataClothLabel = @[@"Cloth ID", @"Cloth name", @"Cloth Price", @"Cloth made in country", @"Cloth Materials"],
-    *dataClothValue = @[@"701", @"T-shirt", @"15", @"China", @"Cotton, Nylon"];
-    
-    self.key = @[@"category", @"label", @"default", @"image"];
-    self.data = @[@{self.key[0]:@"Food",
-                    self.key[1]:dataFoodLabel,
-                    self.key[2]:dataFoodValue,
-                    self.key[3]:@"icon_food"},
-                  
-                  @{self.key[0]:@"Drink",
-                    self.key[1]:dataDrinkLabel,
-                    self.key[2]:dataDrinkValue,
-                    self.key[3]:@"icon_drink"},
-                  
-                  @{self.key[0]:@"Cloth",
-                    self.key[1]:dataClothLabel,
-                    self.key[2]:dataClothValue,
-                    self.key[3]:@"icon_cloth"}];
-    
-    // TODO: add if syntax
-    ItemListTableViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ItemListTableViewControllerID"];
-    controller.delegate = self;
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 #pragma mark - Table view data source
@@ -115,62 +83,22 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         
         controller.delegate = self;
-        controller.selectedProduct = [self.data[indexPath.row] valueForKey:self.key[0]];
         controller.data = self.data;
         controller.key = self.key;
+        controller.selectedProduct = [self.data[indexPath.row] valueForKey:self.key[0]];
     }
 }
 
-- (void) item:(Product *)item {
-    
-    [self.items addObject:item];
-    [self showSumPrice:item];
-}
-
 - (void) showSumPrice:(Product *)item {
+    
+    // Update items in TabBarController
+    [((TabBarController*)(self.tabBarController)).items addObject:item];
+    
     NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     self.sum += [item price];
     cell.textLabel.text = [@"Total $" stringByAppendingString:@(self.sum).stringValue];
 }
-
-- (NSMutableArray<Product *> *)sendItems {
-    return self.items;
-}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 @end
 

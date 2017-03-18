@@ -7,11 +7,9 @@
 //
 
 #import "InputTableViewController.h"
+#import "TabBarController.h"
 
 @interface InputTableViewController ()
-
-@property (strong, nonatomic) Product *item;
-@property NSInteger index;
 
 @end
 
@@ -27,17 +25,10 @@
             break;
         }
     }
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -67,7 +58,9 @@
 
 - (IBAction)sendItem:(id)sender {
     
-    if ([self.delegate respondsToSelector:@selector(item:)]) {
+    Product *item = [[Product alloc] init];
+    
+    if ([self.delegate respondsToSelector:@selector(showSumPrice:)]) {
         
         // Get values from each textfield
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -83,7 +76,7 @@
         
         if (self.index == 0) {
             int i = 0;
-            self.item = [[Food alloc] initWithFoodID:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] integerValue]
+            item = [[Food alloc] initWithFoodID:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] integerValue]
                                             foodName:[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]]
                                            foodPrice:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] floatValue]
                                    foodMadeInCountry:[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]]
@@ -92,7 +85,7 @@
                                      foodIngredients:@[@"chicken", @"oil", @"chees"]]; // TODO: split by comma
         } else if (self.index == 1) {
             int i = 0;
-            self.item = [[Drink alloc] initWithDrinkID:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] integerValue]
+            item = [[Drink alloc] initWithDrinkID:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] integerValue]
                                              drinkName:[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]]
                                             drinkPrice:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] floatValue]
                                     drinkMadeInCountry:[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]]
@@ -100,7 +93,7 @@
                                              drinkSize:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] integerValue]];
         } else if (self.index == 2) {
             int i = 0;
-            self.item = [[Cloth alloc] initWithClothID:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] integerValue]
+            item = [[Cloth alloc] initWithClothID:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] integerValue]
                                              clothName:[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]]
                                             clothPrice:[[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]] floatValue]
                                     clothMadeInCountry:[dict valueForKey:[self.data[self.index] valueForKey:self.key[1]][i++]]
@@ -108,52 +101,14 @@
         }
     }
     
-    [self.delegate item:self.item];
+    // Send item to TabBarController
+    [((TabBarController*)(self.tabBarController)).items addObject:item];
+    
+    // Show sum price on TopViewController
+    [self.delegate showSumPrice:item];
+    
+    // Close
     [[self navigationController] popViewControllerAnimated:YES];
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
