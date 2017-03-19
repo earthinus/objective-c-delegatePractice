@@ -14,8 +14,7 @@
 
 @protocol InputDelegate <NSObject>
 
-- (void) showSumPrice:(Product *)item;
-
+- (void) showSumPrice;
 - (void) addBadge;
 
 @end

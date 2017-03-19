@@ -13,8 +13,6 @@
 
 @property float sum;
 
-- (void) showSumPrice:(Product *)item;
-
 @end
 
 @implementation TopTableViewController
@@ -25,6 +23,14 @@
     self.data = ((NavigationController*)(self.navigationController)).data;
     self.key = ((NavigationController*)(self.navigationController)).key;
     self.sum = 0;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    self.items = ((NavigationController*)(self.navigationController)).items;
+    
+    if (self.items.count != 0) {
+        [self showSumPrice];
+    }
 }
 
 #pragma mark - Table view data source
@@ -87,12 +93,14 @@
     }
 }
 
-- (void) showSumPrice:(Product *)item {
-    
+- (void) showSumPrice {
     NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    self.sum += [item price];
-    cell.textLabel.text = [@"Total $" stringByAppendingString:@(self.sum).stringValue];
+    self.sum = 0;
+    for (Product *item in self.items) {
+        self.sum += item.productPrice;
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"Total $%.2f", self.sum];
 }
 
 - (void) addBadge {

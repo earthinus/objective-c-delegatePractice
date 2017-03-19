@@ -12,6 +12,7 @@
 @interface InputTableViewController ()
 
 @property (strong, nonatomic) NSMutableArray *itemAttribute;
+@property int itemIndex;
 
 - (void) setItemAttributeArr:(Product *)item;
 
@@ -66,14 +67,19 @@
         cell.textField.text = [self.data[self.productType] valueForKey:self.key[2]][indexPath.row];
         
     } else { // from ItemListView
-        for (Product *item in self.items) {
-            if (item.primaryKey == self.primaryKey) {
-                if (!self.itemAttribute) {
-                    [self setItemAttributeArr: item];
-                }
-                cell.textField.text = self.itemAttribute[indexPath.row]; // value of selected item
+        
+        // TODO: excute the for sentence only once
+        for (int i = 0; i < self.items.count; i++) {
+            if (self.items[i].primaryKey == self.primaryKey) {
+                self.itemIndex = i;
             }
         }
+        
+        // Set itemAttribute
+        if (!self.itemAttribute) {
+            [self setItemAttributeArr: self.items[self.itemIndex]];
+        }
+        cell.textField.text = self.itemAttribute[indexPath.row]; // value of selected item
     }
     return cell;
 }
@@ -114,7 +120,7 @@
     
     Product *item = [[Product alloc] init];
     
-    if ([self.delegate respondsToSelector:@selector(showSumPrice:)]) {
+    //if ([self.delegate respondsToSelector:@selector(showSumPrice:)]) {
         
         // Get values from each textfield
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -156,16 +162,27 @@
                                   clothMadeInCountry:[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]]
                                    clothMaterials:@[@"cotton"]]; // TODO: split by comma
         }
+    //}
+    
+    
+    if (self.primaryKey == 0) { // from TopView
+        // Add item to NavigationController
+        [((NavigationController*)(self.navigationController)).items addObject:item];
+        
+        // Show sum price on TopViewController
+        //[self.delegate showSumPrice];
+        
+        // Add badge on TabBarButton
+        [self.delegate addBadge];
+        
+    } else { // from ItemList
+        // Overwrite item to NavigationController
+        [((NavigationController*)(self.navigationController)).items replaceObjectAtIndex:self.itemIndex withObject:item];
     }
     
-    // Send item to NavigationController
-    [((NavigationController*)(self.navigationController)).items addObject:item];
     
-    // Show sum price on TopViewController
-    [self.delegate showSumPrice:item];
-    
-    // Add badge on TabBarButton
-    [self.delegate addBadge];
+//    if ([self.delegate respondsToSelector:@selector(showSumPrice)]) {
+//    }
     
     // Close
     [[self navigationController] popViewControllerAnimated:YES];
