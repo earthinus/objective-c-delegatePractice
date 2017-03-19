@@ -14,11 +14,12 @@
 @property BOOL isDrinkDiet;
 @property NSInteger drinkSize;
 
-- (id) initWithDrinkID:(NSInteger)drinkID
-             drinkName:(NSString*)drinkName
-            drinkPrice:(float)drinkPrice
-    drinkMadeInCountry:(NSString*)drinkMadeInCountry
-           isDrinkDiet:(BOOL)isDrinkDiet
-             drinkSize:(NSInteger)drinkSize;
+- (id) initWithPrimaryKey:(NSInteger)primaryKey
+                  drinkID:(NSInteger)drinkID
+                drinkName:(NSString*)drinkName
+               drinkPrice:(float)drinkPrice
+       drinkMadeInCountry:(NSString*)drinkMadeInCountry
+              isDrinkDiet:(BOOL)isDrinkDiet
+                drinkSize:(NSInteger)drinkSize;
 
 @end

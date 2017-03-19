@@ -10,14 +10,19 @@
 
 @implementation Drink
 
-- (id) initWithDrinkID:(NSInteger)drinkID
-             drinkName:(NSString*)drinkName
-            drinkPrice:(float)drinkPrice
-    drinkMadeInCountry:(NSString*)drinkMadeInCountry
-           isDrinkDiet:(BOOL)isDrinkDiet
-             drinkSize:(NSInteger)drinkSize {
+- (id) initWithPrimaryKey:(NSInteger)primaryKey
+                  drinkID:(NSInteger)drinkID
+                drinkName:(NSString*)drinkName
+               drinkPrice:(float)drinkPrice
+       drinkMadeInCountry:(NSString*)drinkMadeInCountry
+              isDrinkDiet:(BOOL)isDrinkDiet
+                drinkSize:(NSInteger)drinkSize {
     
-    self = [super initWithProductID:drinkID productName:drinkName productPrice:drinkPrice productMadeInCountry:drinkMadeInCountry];
+    self = [super initWithPrimaryKey:primaryKey
+                           productID:drinkID
+                         productName:drinkName
+                        productPrice:drinkPrice
+                productMadeInCountry:drinkMadeInCountry];
     
     if (self) {
         self.isDrinkDiet = isDrinkDiet;
@@ -26,15 +31,12 @@
     return self;
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

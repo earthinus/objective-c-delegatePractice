@@ -10,9 +10,20 @@
 
 @implementation Food
 
-- (id) initWithFoodID:(NSInteger)foodID foodName:(NSString*)foodName foodPrice:(float)foodPrice foodMadeInCountry:(NSString*)foodMadeInCountry foodCalorie:(NSInteger)foodCalorie foodSize:(NSInteger)foodSize foodIngredients:(NSArray<NSString*>*)foodIngredients {
+- (id) initWithPrimaryKey:(NSInteger)primaryKey
+                   foodID:(NSInteger)foodID
+                 foodName:(NSString*)foodName
+                foodPrice:(float)foodPrice
+        foodMadeInCountry:(NSString*)foodMadeInCountry
+              foodCalorie:(NSInteger)foodCalorie
+                 foodSize:(NSInteger)foodSize
+          foodIngredients:(NSArray<NSString*>*)foodIngredients {
     
-    self = [super initWithProductID:foodID productName:foodName productPrice:foodPrice productMadeInCountry:foodMadeInCountry];
+    self = [super initWithPrimaryKey:primaryKey
+                           productID:foodID
+                         productName:foodName
+                        productPrice:foodPrice
+                productMadeInCountry:foodMadeInCountry];
     
     if (self) {
         self.foodCalorie = foodCalorie;
@@ -24,12 +35,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (float) price {

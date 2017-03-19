@@ -8,6 +8,7 @@
 
 #import "ItemListTableViewController.h"
 #import "NavigationController.h"
+#import "InputTableViewController.h"
 
 
 @interface ItemListTableViewController ()
@@ -15,6 +16,10 @@
 @property (strong, nonatomic) NSMutableArray<Food *> *foodItems;
 @property (strong, nonatomic) NSMutableArray<Drink *> *drinkItems;
 @property (strong, nonatomic) NSMutableArray<Cloth *> *clothItems;
+@property (strong, nonatomic) NSArray<NSArray *> *dict;
+@property NSMutableArray *foodPrimaryKeys;
+@property NSMutableArray *drinkPrimaryKeys;
+@property NSMutableArray *clothPrimaryKeys;
 
 @end
 
@@ -33,20 +38,26 @@
     self.items = ((NavigationController *)(self.navigationController)).items;
     
     // Classify to Food, Drink, Cloth
-    _foodItems = [[NSMutableArray<Food *> alloc] init];
-    _drinkItems = [[NSMutableArray<Drink *> alloc] init];
-    _clothItems = [[NSMutableArray<Cloth *> alloc] init];
+    self.foodItems  = [[NSMutableArray<Food *> alloc] init];
+    self.drinkItems = [[NSMutableArray<Drink *> alloc] init];
+    self.clothItems = [[NSMutableArray<Cloth *> alloc] init];
+    self.foodPrimaryKeys  = [[NSMutableArray alloc] init];
+    self.drinkPrimaryKeys = [[NSMutableArray alloc] init];
+    self.clothPrimaryKeys = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < _items.count; i++) {
+    for (int i = 0; i < self.items.count; i++) {
         
-        if ([_items[i] isMemberOfClass:[Food class]]) {
-            [_foodItems addObject:(Food *)_items[i]];
+        if ([self.items[i] isMemberOfClass:[Food class]]) {
+            [self.foodItems addObject:(Food *)self.items[i]];
+            [self.foodPrimaryKeys addObject:[NSNumber numberWithInteger:self.items[i].primaryKey]];
             
         } else if ([_items[i] isMemberOfClass:[Drink class]]) {
-            [_drinkItems addObject:(Drink *)_items[i]];
+            [self.drinkItems addObject:(Drink *)self.items[i]];
+            [self.drinkPrimaryKeys addObject:[NSNumber numberWithInteger:self.items[i].primaryKey]];
             
         } else {
-            [_clothItems addObject:(Cloth *)_items[i]];
+            [self.clothItems addObject:(Cloth *)self.items[i]];
+            [self.clothPrimaryKeys addObject:[NSNumber numberWithInteger:self.items[i].primaryKey]];
         }
     }
     
@@ -149,6 +160,29 @@
         cell.clothNameLabel.text = _clothItems[indexPath.row].productName;
         cell.clothPriceLabel.text = [NSString stringWithFormat:@"$%.2f", _clothItems[indexPath.row].productPrice];
         return cell;
+    }
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    // Send data to InputViewController
+    if ([segue.identifier isEqualToString:@"fromItemListTableView"]) {
+        InputTableViewController *controller = [segue destinationViewController];
+        UITableViewCell *cell = (UITableViewCell*)sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        
+        controller.selectedProduct = [self.data[indexPath.section] valueForKey:self.key[0]];
+        
+        // Set prymaryKey
+        if (indexPath.section == 0) {
+            controller.primaryKey = [self.foodPrimaryKeys[indexPath.row] intValue];
+        } else if (indexPath.section == 1) {
+            controller.primaryKey = [self.drinkPrimaryKeys[indexPath.row] intValue];
+        } else {
+            controller.primaryKey = [self.clothPrimaryKeys[indexPath.row] intValue];
+        }
     }
 }
 

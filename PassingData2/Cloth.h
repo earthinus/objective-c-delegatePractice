@@ -14,10 +14,11 @@
 
 @property NSArray<Material*> *clothMaterials;
 
-- (id) initWithClothID:(NSInteger)clothID
-             clothName:(NSString*)clothName
-            clothPrice:(float)clothPrice
-    clothMadeInCountry:(NSString*)clothMadeInCountry
-        clothMaterials:(NSArray<Material*>*)clothMaterials;
+- (id) initWithPrimaryKey:(NSInteger)primaryKey
+                  clothID:(NSInteger)clothID
+                clothName:(NSString*)clothName
+               clothPrice:(float)clothPrice
+       clothMadeInCountry:(NSString*)clothMadeInCountry
+           clothMaterials:(NSArray<Material*>*)clothMaterials;
 
 @end

@@ -21,5 +21,6 @@
 @property (strong, nonatomic) IBOutlet NSMutableArray<Product *> *items;
 @property (strong, nonatomic) NSArray<NSArray *> *data;
 @property (strong, nonatomic) NSArray<NSString *> *key;
+@property NSInteger primaryKey;
 
 @end

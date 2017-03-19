@@ -16,7 +16,14 @@
 @property NSArray<NSString *> *foodIngredients;
 
 
-- (id) initWithFoodID:(NSInteger)foodID foodName:(NSString*)foodName foodPrice:(float)foodPrice foodMadeInCountry:(NSString*)foodMadeInCountry foodCalorie:(NSInteger)foodCalorie foodSize:(NSInteger)foodSize foodIngredients:(NSArray<NSString*>*)foodIngredients;
+- (id) initWithPrimaryKey:(NSInteger)primaryKey
+                   foodID:(NSInteger)foodID
+                 foodName:(NSString*)foodName
+                foodPrice:(float)foodPrice
+        foodMadeInCountry:(NSString*)foodMadeInCountry
+              foodCalorie:(NSInteger)foodCalorie
+                 foodSize:(NSInteger)foodSize
+          foodIngredients:(NSArray<NSString*>*)foodIngredients;
 
 - (float) price;
 

@@ -10,13 +10,15 @@
 
 @implementation Product
 
-- (id) initWithProductID:(NSInteger)productID
+- (id) initWithPrimaryKey:(NSInteger)primaryKey
+               productID:(NSInteger)productID
              productName:(NSString*)productName
             productPrice:(float)productPrice
     productMadeInCountry:(NSString*)productMadeInCountry {
     
     self = [super init];
     if (self) {
+        self.primaryKey = primaryKey;
         self.productID = productID;
         self.productName = productName;
         self.productPrice = productPrice;
@@ -25,18 +27,13 @@
     return self;
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
 
 - (float) price {
     return self.productPrice;

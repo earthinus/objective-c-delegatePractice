@@ -10,13 +10,18 @@
 
 @implementation Cloth
 
-- (id) initWithClothID:(NSInteger)clothID
-             clothName:(NSString*)clothName
-            clothPrice:(float)clothPrice
-    clothMadeInCountry:(NSString*)clothMadeInCountry
-        clothMaterials:(NSArray<Material*>*)clothMaterials {
+- (id) initWithPrimaryKey:(NSInteger)primaryKey
+                  clothID:(NSInteger)clothID
+                clothName:(NSString*)clothName
+               clothPrice:(float)clothPrice
+       clothMadeInCountry:(NSString*)clothMadeInCountry
+           clothMaterials:(NSArray<Material*>*)clothMaterials {
     
-    self = [super initWithProductID:clothID productName:clothName productPrice:clothPrice productMadeInCountry:clothMadeInCountry];
+    self = [super initWithPrimaryKey:primaryKey
+                           productID:clothID
+                         productName:clothName
+                        productPrice:clothPrice
+                productMadeInCountry:clothMadeInCountry];
     
     if (self) {
         self.clothMaterials = clothMaterials;
@@ -26,12 +31,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

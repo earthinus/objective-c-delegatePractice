@@ -24,9 +24,11 @@
 
 @property (weak, nonatomic) id<InputDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UITableView *inputTableView;
+@property (strong, nonatomic) IBOutlet NSMutableArray<Product *> *items;
 @property (strong, nonatomic) NSArray<NSArray *> *data;
 @property (strong, nonatomic) NSArray<NSString *> *key;
 @property (strong, nonatomic) NSString *selectedProduct;
-@property NSInteger index;
+@property NSInteger productType;
+@property NSInteger primaryKey;
 
 @end

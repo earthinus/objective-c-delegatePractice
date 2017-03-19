@@ -13,6 +13,7 @@
 @property int materialCode;
 @property (strong, nonatomic) NSString *materialName;
 
-- (id) initWithMaterialCode:(int)materialCode materialName:(NSString*)materialName;
+- (id) initWithMaterialCode:(int)materialCode
+               materialName:(NSString*)materialName;
 
 @end
