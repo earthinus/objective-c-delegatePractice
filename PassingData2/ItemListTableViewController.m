@@ -8,6 +8,7 @@
 
 #import "ItemListTableViewController.h"
 #import "NavigationController.h"
+#import "TopTableViewController.h"
 #import "InputTableViewController.h"
 
 
@@ -173,9 +174,9 @@
         UITableViewCell *cell = (UITableViewCell*)sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         
-        controller.selectedProduct = [self.data[indexPath.section] valueForKey:self.key[0]];
+        controller.productType = indexPath.section;
         
-        // Set prymaryKey
+        // Set primaryKey
         if (indexPath.section == 0) {
             controller.primaryKey = [self.foodPrimaryKeys[indexPath.row] intValue];
         } else if (indexPath.section == 1) {

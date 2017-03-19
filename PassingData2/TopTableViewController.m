@@ -11,7 +11,7 @@
 
 @interface TopTableViewController ()
 
-@property float sum;
+@property float totalPrice;
 
 @end
 
@@ -21,15 +21,16 @@
     [super viewDidLoad];
     
     self.data = ((NavigationController*)(self.navigationController)).data;
-    self.key = ((NavigationController*)(self.navigationController)).key;
-    self.sum = 0;
+    self.key  = ((NavigationController*)(self.navigationController)).key;
+    self.totalPrice = 0;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     self.items = ((NavigationController*)(self.navigationController)).items;
     
     if (self.items.count != 0) {
-        [self showSumPrice];
+        [self setTotalPrice];
+        [self setBadge];
     }
 }
 
@@ -52,30 +53,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0) {
-    
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TopTableViewCellID" forIndexPath:indexPath];
-        
         cell.imageView.image = [UIImage imageNamed:[self.data[indexPath.row] valueForKey:self.key[3]]];
         cell.textLabel.text = [self.data[indexPath.row] valueForKey:self.key[0]];
         return cell;
         
     } else {
-        
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TopTableViewPriceCellID" forIndexPath:indexPath];
-        
-        cell.textLabel.text = [@"Total $" stringByAppendingString:@(self.sum).stringValue];
+        cell.textLabel.text = [@"Total $" stringByAppendingString:@(self.totalPrice).stringValue];
         return cell;
     }
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (indexPath.section == 0) {
-        return 100;
-        
-    } else {
-        return 100;
-    }
+    return 100;
 }
 
 #pragma mark - Navigation
@@ -88,27 +79,28 @@
         UITableViewCell *cell = (UITableViewCell*)sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         
-        controller.delegate = self;
-        controller.selectedProduct = [self.data[indexPath.row] valueForKey:self.key[0]];
+        controller.productType = indexPath.row;
     }
 }
 
-- (void) showSumPrice {
+- (void) setTotalPrice {
+    
+    // Get the tableView's section for Total Price
     NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    self.sum = 0;
+    
+    // Caliculate
+    self.totalPrice = 0;
     for (Product *item in self.items) {
-        self.sum += item.productPrice;
+        self.totalPrice += item.productPrice;
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"Total $%.2f", self.sum];
+    // Set text
+    cell.textLabel.text = [NSString stringWithFormat:@"Total $%.2f", self.totalPrice];
 }
 
-- (void) addBadge {
-    self.items = ((NavigationController*)(self.navigationController)).items;
-    
-    // Add badge on TabBarButton
-    UITabBarItem *tbi = (UITabBarItem *)[self.tabBarController.tabBar.items objectAtIndex:1];
-    tbi.badgeValue = [NSString stringWithFormat:@"%lu", (unsigned long)self.items.count];
+- (void) setBadge { // Add badge on TabBarButton
+    UITabBarItem *itemListTabBarItem = (UITabBarItem *)[self.tabBarController.tabBar.items objectAtIndex:1];
+    itemListTabBarItem.badgeValue = [NSString stringWithFormat:@"%lu", (unsigned long)self.items.count];
 }
 
 @end

@@ -12,21 +12,12 @@
 #import "Drink.h"
 #import "Cloth.h"
 
-@protocol InputDelegate <NSObject>
-
-- (void) showSumPrice;
-- (void) addBadge;
-
-@end
-
 @interface InputTableViewController : UITableViewController
 
-@property (weak, nonatomic) id<InputDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UITableView *inputTableView;
 @property (strong, nonatomic) IBOutlet NSMutableArray<Product *> *items;
 @property (strong, nonatomic) NSArray<NSArray *> *data;
 @property (strong, nonatomic) NSArray<NSString *> *key;
-@property (strong, nonatomic) NSString *selectedProduct;
 @property NSInteger productType;
 @property NSInteger primaryKey;
 

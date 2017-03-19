@@ -26,14 +26,6 @@
     self.items = ((NavigationController *)(self.navigationController)).items;
     self.data = ((NavigationController*)(self.navigationController)).data;
     self.key = ((NavigationController*)(self.navigationController)).key;
-    
-    // Get product type
-    for (int i = 0; i < self.data.count; i++) {
-        if ([self.selectedProduct isEqualToString:[self.data[i] valueForKey:self.key[0]]]) {
-            self.productType = i;
-            break;
-        }
-    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,6 +77,8 @@
 }
 
 - (void) setItemAttributeArr:(Product *)item {
+    
+    // for the case of coming from ItemList, create array of values to set textFields as default value.
     if (item.primaryKey == self.primaryKey) {
         if (self.productType == 0) {
             Food *food = (Food *) item;
@@ -119,70 +113,56 @@
 - (IBAction)sendItem:(id)sender {
     
     Product *item = [[Product alloc] init];
-    
-    //if ([self.delegate respondsToSelector:@selector(showSumPrice:)]) {
         
-        // Get values from each textfield
-        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        NSIndexPath *indexPath;
-        InputTableViewCell *cell;
-        NSArray *arrLable = [self.data[self.productType] valueForKey:self.key[1]];
-        for (int i = 0; i < arrLable.count; i++) {
-            indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-            cell = [self.inputTableView cellForRowAtIndexPath:indexPath];
-            [dict setObject:cell.textField.text forKey:[self.data[self.productType] valueForKey:self.key[1]][i]];
-        }
-        
-        // Set the item
-        int i = 0;
-        NSInteger primaryKey = 0;
-        primaryKey = self.items.count + 1;
-        if (self.productType == 0) {
-            item = [[Food alloc] initWithPrimaryKey:primaryKey
-                                             foodID:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] integerValue]
-                                           foodName:[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]]
-                                          foodPrice:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] floatValue]
-                                  foodMadeInCountry:[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]]
-                                        foodCalorie:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] integerValue]
-                                           foodSize:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] integerValue]
-                                    foodIngredients:@[@"chicken", @"oil", @"chees"]]; // TODO: split by comma
-        } else if (self.productType == 1) {
-            item = [[Drink alloc] initWithPrimaryKey:primaryKey
-                                             drinkID:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] integerValue]
-                                           drinkName:[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]]
-                                          drinkPrice:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] floatValue]
-                                  drinkMadeInCountry:[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]]
-                                         isDrinkDiet:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] integerValue]
-                                           drinkSize:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] integerValue]];
-        } else if (self.productType == 2) {
-            item = [[Cloth alloc] initWithPrimaryKey:primaryKey
-                                             clothID:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] integerValue]
-                                           clothName:[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]]
-                                          clothPrice:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] floatValue]
-                                  clothMadeInCountry:[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]]
-                                   clothMaterials:@[@"cotton"]]; // TODO: split by comma
-        }
-    //}
+    // Get values from each textfield
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    NSIndexPath *indexPath;
+    InputTableViewCell *cell;
+    NSArray *arrLable = [self.data[self.productType] valueForKey:self.key[1]];
+    for (int i = 0; i < arrLable.count; i++) {
+        indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        cell = [self.inputTableView cellForRowAtIndexPath:indexPath];
+        [dict setObject:cell.textField.text forKey:[self.data[self.productType] valueForKey:self.key[1]][i]];
+    }
     
+    // Set the item
+    int i = 0;
+    NSInteger primaryKey = 0;
+    primaryKey = self.items.count + 1;
+    if (self.productType == 0) {
+        item = [[Food alloc] initWithPrimaryKey:primaryKey
+                                         foodID:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] integerValue]
+                                       foodName:[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]]
+                                      foodPrice:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] floatValue]
+                              foodMadeInCountry:[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]]
+                                    foodCalorie:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] integerValue]
+                                       foodSize:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] integerValue]
+                                foodIngredients:@[@"chicken", @"oil", @"chees"]]; // TODO: split by comma
+    } else if (self.productType == 1) {
+        item = [[Drink alloc] initWithPrimaryKey:primaryKey
+                                         drinkID:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] integerValue]
+                                       drinkName:[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]]
+                                      drinkPrice:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] floatValue]
+                              drinkMadeInCountry:[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]]
+                                     isDrinkDiet:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] integerValue]
+                                       drinkSize:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] integerValue]];
+    } else if (self.productType == 2) {
+        item = [[Cloth alloc] initWithPrimaryKey:primaryKey
+                                         clothID:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] integerValue]
+                                       clothName:[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]]
+                                      clothPrice:[[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]] floatValue]
+                              clothMadeInCountry:[dict valueForKey:[self.data[self.productType] valueForKey:self.key[1]][i++]]
+                               clothMaterials:@[@"cotton"]]; // TODO: split by comma
+    }
     
     if (self.primaryKey == 0) { // from TopView
         // Add item to NavigationController
         [((NavigationController*)(self.navigationController)).items addObject:item];
         
-        // Show sum price on TopViewController
-        //[self.delegate showSumPrice];
-        
-        // Add badge on TabBarButton
-        [self.delegate addBadge];
-        
     } else { // from ItemList
         // Overwrite item to NavigationController
         [((NavigationController*)(self.navigationController)).items replaceObjectAtIndex:self.itemIndex withObject:item];
     }
-    
-    
-//    if ([self.delegate respondsToSelector:@selector(showSumPrice)]) {
-//    }
     
     // Close
     [[self navigationController] popViewControllerAnimated:YES];

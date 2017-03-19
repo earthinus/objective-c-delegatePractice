@@ -10,12 +10,15 @@
 #import "InputTableViewController.h"
 #import "Product.h"
 
-@interface TopTableViewController : UITableViewController <InputDelegate>
+@interface TopTableViewController : UITableViewController
 
 @property (strong, nonatomic) IBOutlet UITableView *TopTableView;
 @property (strong, nonatomic) NSArray<NSString *> *productName;
 @property (strong, nonatomic) NSMutableArray<Product *> *items;
 @property (strong, nonatomic) NSArray<NSArray *> *data;
 @property (strong, nonatomic) NSArray<NSString *> *key;
+
+- (void) setTotalPrice;
+- (void) setBadge;
 
 @end
