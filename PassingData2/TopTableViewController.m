@@ -92,7 +92,7 @@
     // Caliculate
     self.totalPrice = 0;
     for (Product *item in self.items) {
-        self.totalPrice += item.productPrice;
+        self.totalPrice += [item price];
     }
     // Set text
     cell.textLabel.text = [NSString stringWithFormat:@"Total $%.2f", self.totalPrice];
